@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Diabetes Predictor</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link rel="stylesheet" href="/static/style.css">
+
+  <style>
+    body { font-family: Arial, sans-serif; background:#f2f2f7; padding:20px; }
+    .container { max-width:700px; margin:auto; background:white; padding:20px; border-radius:10px; box-shadow:0 0 12px rgba(0,0,0,0.1); }
+    h1 { margin-top:0; text-align:center; }
+
+    .row { 
+      display:grid; 
+      grid-template-columns:repeat(2,1fr); 
+      gap:12px; 
+      margin-bottom:20px; 
+    }
+    label { font-weight:bold; }
+    input { width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; }
+
+    button {
+      padding:10px 18px;
+      border:none;
+      border-radius:6px;
+      font-size:16px;
+      cursor:pointer;
+    }
+
+    #predictBtn { background:#0066ff; color:white; }
+    #clearBtn   { background:#999; color:white; margin-left:10px; }
+
+    #out { 
+      margin-top:20px;
+      padding:15px;
+      background:white;
+      border-left:6px solid #0066ff;
+      border-radius:6px;
+      font-size:17px;
+      display:none;
+    }
+
+    .positive { color:#b00000; font-weight:bold; }
+    .negative { color:#008000; font-weight:bold; }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Diabetes Predictor</h1>
+
+    <form id="f">
+      <div class="row">
+        <label>Pregnancies <input name="Pregnancies" type="number" value="0"/></label>
+        <label>Glucose <input name="Glucose" type="number" value="120"/></label>
+        <label>BloodPressure <input name="BloodPressure" type="number" value="70"/></label>
+        <label>SkinThickness <input name="SkinThickness" type="number" value="20"/></label>
+        <label>Insulin <input name="Insulin" type="number" value="79"/></label>
+        <label>BMI <input name="BMI" type="number" value="32" step="0.1"/></label>
+        <label>DiabetesPedigreeFunction <input name="DiabetesPedigreeFunction" type="number" value="0.5" step="0.001"/></label>
+        <label>Age <input name="Age" type="number" value="33"/></label>
+      </div>
+
+      <button id="predictBtn" type="button">Predict</button>
+      <button id="clearBtn" type="button">Clear</button>
+    </form>
+
+    <div id="out"></div>
+  </div>
+
+<script>
+document.getElementById("predictBtn").addEventListener("click", async () => {
+  const form = document.getElementById("f");
+  const fd = new FormData(form);
+  const data = {};
+  fd.forEach((v, k) => data[k] = v);
+
+  const out = document.getElementById("out");
+  out.style.display = "block";
+  out.innerHTML = "Predicting...";
+
+  try {
+    const res = await fetch("/predict", {
+      method: "POST",
+      headers: { "Content-Type":"application/json" },
+      body: JSON.stringify(data)
+    });
+
+    const j = await res.json();
+
+    if (!res.ok) {
+      out.innerHTML = "Error: " + (j.error || "Unknown");
+      return;
+    }
+
+    const probability = (j.probability * 100).toFixed(1);
+    const prediction = j.prediction;
+
+    let resultText = `Probability: ${probability}%<br>`;
+
+    if (prediction === 1) {
+      resultText += `<span class="positive">Prediction: Diabetes Positive (High Risk)</span>`;
+    } else {
+      resultText += `<span class="negative">Prediction: Diabetes Negative (Low Risk)</span>`;
+    }
+
+    out.innerHTML = resultText;
+
+  } catch (err) {
+    out.innerHTML = "Network Error: " + err.message;
+  }
+});
+
+document.getElementById("clearBtn").addEventListener("click", () => {
+  document.getElementById("f").reset();
+  const out = document.getElementById("out");
+  out.style.display = "none";
+  out.innerHTML = "";
+});
+</script>
+
+</body>
+</html>
