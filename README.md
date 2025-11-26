@@ -1,4 +1,4 @@
-🧠 Diabetes Prediction Web Application
+🧠 Clinical Diabetes Prediction System
 
 A full-stack Machine Learning + Flask web application that predicts diabetes risk using real medical diagnostic features.
 This project demonstrates a complete ML workflow — from data preprocessing to model training, saving, API integration, and deployment-ready web UI.
