@@ -174,6 +174,10 @@ Upgrade UI using Bootstrap / Material UI
 M V Karthikeya
 Machine Learning & Python Developer
 
+📜 License
+
+This project is licensed under the MIT License.
+
 ⭐ Support
 
 If you found this useful, please star the repository — it motivates me to build more! ⭐
