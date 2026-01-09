@@ -156,10 +156,15 @@ diabetes_project/
 └── README.md
 
 🖼️ Screenshots
+Figure 1: Clean Clinical Input Interface
 
 <img width="1366" height="768" alt="2025-11-26 (2)" src="https://github.com/user-attachments/assets/f29980cb-f5ee-4b6e-87f5-570ba6106c38" />
 
+Figure 2: Low-Risk Diabetes Prediction
+
 <img width="1366" height="768" alt="2025-11-26 (1)" src="https://github.com/user-attachments/assets/6754634a-b823-4f18-b541-f2dc565c67f5" />
+
+Figure 3: High-Risk Diabetes Prediction
 
 <img width="1366" height="768" alt="2025-11-26" src="https://github.com/user-attachments/assets/c723845d-7638-47de-9b93-0f43fd7e453e" />
 
