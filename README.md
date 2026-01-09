@@ -1,41 +1,131 @@
 🧠 Machine Learning–Based Clinical Diabetes Prediction System
 
-A full-stack Machine Learning + Flask web application that predicts diabetes risk using real medical diagnostic features.
-This project demonstrates a complete ML workflow — from data preprocessing to model training, saving, API integration, and deployment-ready web UI.
+A Full-Stack Machine Learning Application for Clinical Risk Assessment
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10+-blue?logo=python">
-  <img src="https://img.shields.io/badge/Flask-Framework-black?logo=flask">
-  <img src="https://img.shields.io/badge/Scikit--Learn-ML-orange?logo=scikitlearn">
-  <img src="https://img.shields.io/badge/Status-Active-brightgreen">
-</p>
+📌 Overview
 
-🚀 Overview
+The Clinical Diabetes Prediction System is a machine learning–powered web application that predicts the risk of diabetes using real medical diagnostic features such as glucose level, BMI, age, insulin, and blood pressure.
 
-This project demonstrates an end-to-end ML pipeline, including:
+The project demonstrates a complete end-to-end machine learning workflow, including data preprocessing, supervised model training, model serialization, REST-style API integration, and a deployment-ready web interface built using Flask. It highlights the practical application of AI in healthcare decision-support systems.
 
-🧹 Data preprocessing
+🎯 Objectives
 
-🤖 Logistic Regression model
+Build a clinical risk prediction model using supervised machine learning
 
-💾 Model saving using Joblib
+Apply data preprocessing, imputation, and feature scaling techniques
 
-🔌 Flask API endpoints
+Deploy the trained model via a Flask-based web application
 
-🎨 Interactive HTML + CSS UI
+Provide probability-based predictions for interpretability
 
-📊 Real-time predictions with probability output
+Demonstrate applied machine learning in a healthcare context
 
-A perfect demonstration of AI in healthcare, ML deployment, and Python full-stack development.
+🚀 Key Capabilities
 
-🧰 Tech Stack
+✔ End-to-end ML pipeline (data → model → deployment)
+✔ Logistic Regression–based diabetes prediction
+✔ Real-time prediction with probability output
+✔ Clean and responsive web interface
+✔ REST-style API endpoints
+✔ Modular, maintainable, and extensible codebase
+
+🧠 Machine Learning Workflow
+🧹 Data Preprocessing
+
+Handling missing values using imputation
+
+Feature scaling using standardization
+
+Ensuring consistent preprocessing during training and inference
+
+🤖 Model
+
+Logistic Regression for binary classification
+
+Probability-based output to represent risk level
+
+💾 Model Persistence
+
+Trained pipeline saved using Joblib
+
+Enables reproducibility and efficient reuse
+
+🔮 Prediction
+
+User inputs are processed through the preprocessing pipeline
+
+Model outputs:
+
+Diabetes risk probability (%)
+
+Classification (Diabetic / Non-Diabetic)
+
+🧪 Example Predictions
+🔴 High-Risk Sample
+
+Input
+
+Glucose: 180
+
+BMI: 36
+
+Age: 45
+
+Insulin: 94
+
+Pregnancies: 2
+
+Output
+
+Probability: 77.7%
+
+Prediction: Diabetes Positive (High Risk)
+
+🟢 Low-Risk Sample
+
+Input
+
+Glucose: 95
+
+BMI: 24
+
+Age: 25
+
+Output
+
+Probability: 12.4%
+
+Prediction: Diabetes Negative (Low Risk)
+
+📡 API Endpoints
+Endpoint	Method	Description
+/	GET	Loads frontend UI
+/predict	POST	Predicts diabetes risk & probability
+/health	GET	Checks model availability
+/data-head	GET	Returns first 5 rows of dataset
+/data-tail	GET	Returns last 5 rows of dataset
+🧠 Dataset Description
+
+The dataset (diabetes_user.csv) contains medical diagnostic features:
+
+Feature	Description
+Pregnancies	Number of pregnancies
+Glucose	Plasma glucose concentration
+BloodPressure	Diastolic blood pressure
+SkinThickness	Skin fold thickness
+Insulin	2-hour serum insulin
+BMI	Body mass index
+DiabetesPedigreeFunction	Hereditary risk score
+Age	Age in years
+Outcome	1 = Diabetic, 0 = Non-Diabetic
+🛠 Tech Stack
 Backend & Machine Learning
 
 Python
 
 Pandas, NumPy
 
-Scikit-Learn
+Scikit-learn
 
 Joblib
 
@@ -51,114 +141,19 @@ JavaScript
 
 📂 Project Structure
 diabetes_project/
+│
 ├── static/
-│   └── style.css
+│   └── style.css                  # Styling
+│
 ├── templates/
-│   └── index.html
-├── venv/                  
-├── app.py                 # Flask API + Frontend
-├── train_model.py         # model training script
-├── diabetes_user.csv      # dataset
-├── model.joblib           # trained ML model
-└── requirements.txt
-
-⚙️ Installation & Setup
-1. Clone the repository
-git clone https://github.com/yourusername/diabetes-prediction.git
-cd diabetes-prediction
-
-2. Install dependencies
-pip install -r requirements.txt
-
-3. Train the model
-python train_model.py
-
-4. Run the Flask app
-python app.py
-
-5. Open in browser
-http://127.0.0.1:5000/
-
-🧪 Example Predictions
-🔴 High-Risk Sample
-
-Input:
-
-Glucose: 180
-
-BMI: 36
-
-Age: 45
-
-Insulin: 94
-
-Pregnancies: 2
-
-Output:
-
-Probability: 77.7%
-
-Prediction: Diabetes Positive (High Risk)
-
-🟢 Low-Risk Sample
-
-Input:
-
-Glucose: 95
-
-BMI: 24
-
-Age: 25
-
-Output:
-
-Probability: 12.4%
-
-Prediction: Diabetes Negative (Low Risk)
-
-📡 API Endpoints
-Endpoint	Method	Description
-/	GET	Loads frontend UI
-/predict	POST	Predicts diabetes + probability
-/health	GET	Checks model status
-/data-head	GET	Returns first 5 rows of dataset
-/data-tail	GET	Returns last 5 rows
-🧠 Dataset Description
-
-The dataset diabetes_user.csv contains:
-
-Feature	Description
-Pregnancies	Number of pregnancies
-Glucose	Plasma glucose concentration
-BloodPressure	Diastolic BP
-SkinThickness	Skin fold thickness
-Insulin	2-hour serum insulin
-BMI	Body mass index
-DiabetesPedigreeFunction	Hereditary risk score
-Age	Age in years
-Outcome	1 = Diabetic, 0 = Non-Diabetic
-⭐ Features
-
-✔ Clean & responsive UI
-✔ Real-time ML predictions
-✔ Probability-based output
-✔ Preprocessing pipeline (Imputer + Scaler + Model)
-✔ Dataset preview endpoints
-✔ Modular and extendable code
-
-🔮 Future Enhancements
-
-Deploy on Render / Heroku
-
-Add user authentication
-
-Save user prediction history
-
-SHAP explainability visuals
-
-Data distribution plots (Matplotlib/Seaborn)
-
-Upgrade UI using Bootstrap / Material UI
+│   └── index.html                 # Web UI
+│
+├── app.py                         # Flask API + frontend
+├── train_model.py                 # Model training script
+├── diabetes_user.csv              # Dataset
+├── model.joblib                   # Trained ML pipeline
+├── requirements.txt
+└── README.md
 
 🖼️ Screenshots
 
@@ -168,16 +163,66 @@ Upgrade UI using Bootstrap / Material UI
 
 <img width="1366" height="768" alt="2025-11-26" src="https://github.com/user-attachments/assets/c723845d-7638-47de-9b93-0f43fd7e453e" />
 
+⚙️ Installation & Setup
+1️⃣ Clone the Repository
+git clone https://github.com/yourusername/diabetes-prediction.git
+cd diabetes-prediction
 
-👨‍💻 Author
+2️⃣ Install Dependencies
+pip install -r requirements.txt
+
+3️⃣ Train the Model
+python train_model.py
+
+4️⃣ Run the Application
+python app.py
+
+5️⃣ Open in Browser
+http://127.0.0.1:5000/
+
+🏢 Internship Context
+
+This project was developed during my AI/ML Internship at InternPe.
+
+The work focused on applying practical machine learning and full-stack development concepts, including:
+
+Data preprocessing and feature engineering
+
+Supervised classification using Logistic Regression
+
+Backend development using Flask
+
+REST-style API design for ML inference
+
+Real-time probability-based risk prediction
+
+Integration of ML models into healthcare web applications
+
+This project represents academic and practical work completed during the internship period, demonstrating the application of machine learning in clinical decision-support systems.
+
+🔮 Future Enhancements
+
+Deployment on Render / Heroku
+
+User authentication and prediction history
+
+SHAP-based explainability visualizations
+
+Feature distribution and statistical analysis plots
+
+UI upgrade using Bootstrap or Material UI
+
+👤 Author
 
 M V Karthikeya
 Machine Learning & Python Developer
+
+GitHub: https://github.com/Mvkarthikeya07
 
 📜 License
 
 This project is licensed under the MIT License.
 
-⭐ Support
+⭐ Final Remarks
 
-If you found this useful, please star the repository — it motivates me to build more! ⭐
+This project demonstrates a production-ready healthcare machine learning system, highlighting strong capabilities in data preprocessing, supervised modeling, backend development, and real-time deployment, making it suitable for academic evaluation, professional portfolios, and research-oriented applications.
